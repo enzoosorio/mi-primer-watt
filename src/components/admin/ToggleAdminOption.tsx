@@ -27,7 +27,7 @@ export const ToggleAdminOption = () => {
         <button 
         onClick={(() => handleToggleOption("qna"))}
         className={`font-delicious-small-caps px-4 py-2 text-xl bg-primary-blue text-white rounded-lg hover:bg-blue-400 ${option === "qna" ? "bg-blue-400" : "bg-primary-blue"} transition-colors cursor-pointer`}>
-            Qna's
+            Qnas
         </button>
         <button 
         onClick={(() => handleToggleOption("timeline"))}

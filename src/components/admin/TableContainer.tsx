@@ -1,7 +1,7 @@
 "use client"
 
 import { updatePregunta } from '@/src/actions/pregunta';
-import { getQuestionsInPending, IQnAWithId } from '@/src/lib/getQuestionsInPending'
+import { IQnAWithId } from '@/src/lib/getQuestionsInPending'
 import { useState, useTransition } from 'react';
 import toast from 'react-hot-toast';
 

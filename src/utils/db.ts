@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -6,26 +6,25 @@ if (!MONGO_URI) {
   throw new Error("Mongo URI is missing");
 }
 
-declare global {
-  var mongooseConnection: any;
-}
+// Evitar `declare global` y usar una variable en `globalThis`
+const globalWithMongoose = globalThis as unknown as { mongooseConnection?: Mongoose };
 
-const connectDB = async () => {
-  if (global.mongooseConnection) {
-    console.log("Conexion a mongodb establecida");
-    return global.mongooseConnection;
+const connectDB = async (): Promise<Mongoose> => {
+  if (globalWithMongoose.mongooseConnection) {
+    console.log("✅ Using existing MongoDB connection");
+    return globalWithMongoose.mongooseConnection;
   }
 
   try {
     const conn = await mongoose.connect(MONGO_URI);
-  
-    global.mongooseConnection = conn;
+    console.log(`🚀 MongoDB Connected: ${conn.connection.host}`);
+
+    globalWithMongoose.mongooseConnection = conn; // Almacenar conexión en globalThis
     return conn;
-  } catch (error: any) {
-    console.error(`❌ ERROR: ${error.message}`);
+  } catch (error: unknown) {
+    console.error(`❌ ERROR: ${(error as Error).message}`);
     process.exit(1);
   }
 };
-
 
 export default connectDB;

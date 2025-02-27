@@ -20,7 +20,7 @@ export const getAlbumIdByDate = async (date : Date | string | undefined ) => {
         dateToSearch = date
     }
     
-    const album : IAlbumWithId = JSON.parse(JSON.stringify(await AlbumCollection.findOne({date: date})));
+    const album : IAlbumWithId = JSON.parse(JSON.stringify(await AlbumCollection.findOne({date: dateToSearch})));
     
     const albumId = album._id.toString()
 

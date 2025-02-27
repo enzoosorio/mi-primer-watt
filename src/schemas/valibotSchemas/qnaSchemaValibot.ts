@@ -1,10 +1,4 @@
-import {date, object, string, minLength, pipe, required, InferOutput, transform, includes, enum_, optional} from 'valibot'
-
-enum typesQuestions {
-    "publico" = "publico",
-    "privado" = "privado"
-}
-
+import {object, string, minLength, pipe, InferOutput} from 'valibot'
 
 export const QNASchemaValibot = object({ 
     username: string(),

@@ -15,7 +15,7 @@ interface AdminTimelineContainerProps {
 
 export const AdminTimelineContainer = ({datesTimeline} : AdminTimelineContainerProps) => {
   
-  const [isPeding, startTransition] = useTransition()
+  const [isPending, startTransition] = useTransition()
   const [pickedAlbum, setPickedAlbum] = useState<string>("")
   
   const handleCreatingAlbum = async (e : React.FormEvent<HTMLFormElement>) => {
@@ -116,8 +116,11 @@ export const AdminTimelineContainer = ({datesTimeline} : AdminTimelineContainerP
       className="flex flex-col items-start justify-start gap-6 w-full">
         <RInput htmlFor="fecha" label="Fecha" type="date" name="fecha" placeholder="Fecha"/>
         <button 
+        disabled={isPending}
         type="submit"
-        className="bg-primary-blue rounded-xl px-4 py-2 text-white font-nunito w-max cursor-pointer hover:bg-blue-400 transition-colors">
+        className={`bg-primary-blue rounded-xl px-4 py-2 text-white font-nunito w-max cursor-pointer hover:bg-blue-400 transition-colors
+        ${isPending ? "bg-gray-400 cursor-auto" : "bg-primary-blue"} transition-colors
+        `}>
             Crear dia para el album
         </button>
 

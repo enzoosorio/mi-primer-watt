@@ -2,7 +2,6 @@
 import connectDB from "@/src/utils/db";
 import { IAlbum } from "@/src/schemas/mongooseSchemas/Timeline";
 import AlbumCollection from "@/src/schemas/mongooseSchemas/Timeline";
-import { DatesForTimelineWithString } from "@/src/types/timelineDate";
 
 export interface IAlbumWithId extends IAlbum {
     _id: string;

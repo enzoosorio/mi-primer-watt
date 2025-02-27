@@ -9,11 +9,6 @@ import { s3Client } from "../utils/s3";
 import connectDB from "../utils/db";
 import { getAlbumByDate } from "../lib/timeline/getAlbumByDate";
 
-type ActionResult = {
-    success?: string;
-    error?: string;
-    uploadURL?: { url: string, key: string };
-}
 
 export interface IcreateContent extends Omit<IContentAlbum, "album" | "media"> {
     date: Date;

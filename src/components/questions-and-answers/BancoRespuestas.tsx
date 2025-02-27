@@ -1,12 +1,10 @@
 "use client";
 
-import React, { act, useEffect, useRef, useState } from "react";
-import { questions } from "@/src/utils/questionsMock";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import Image from "next/image";
-import { QNASchemaValibotType } from "@/src/schemas/valibotSchemas/qnaSchemaValibot";
 import { IQnA } from "@/src/schemas/mongooseSchemas/QnA";
-import { getAllAnswers, getAllAnswersByPage } from "@/src/lib/getAllAnswers";
+import { getAllAnswersByPage } from "@/src/lib/getAllAnswers";
 import { getAnswersByQuestion } from "@/src/lib/getAnswersByQuestion";
 
 interface QnAProps {
@@ -27,16 +25,16 @@ export const BancoRespuestas = ({firstPageQnA} : QnAProps) => {
     if(firstPageQnA != null) {
       setQuestionsList(firstPageQnA)
     }
-  }, [])
+  }, [firstPageQnA])
 
-  const fetchContent = async () => {
+  const fetchContent = useCallback(async () => {
     const contentForActiveQuestion = await getAllAnswersByPage(currentIndex + 1);
-    if(contentForActiveQuestion?.data == null) {
-      return
+    if (contentForActiveQuestion?.data == null) {
+      return;
     }
-    setQuestionsList(contentForActiveQuestion.data)
-    setTotalPages(contentForActiveQuestion.totalPages)
-  }
+    setQuestionsList(contentForActiveQuestion.data);
+    setTotalPages(contentForActiveQuestion.totalPages);
+  }, [currentIndex]);
 
   useEffect(() => {
 
@@ -55,7 +53,7 @@ export const BancoRespuestas = ({firstPageQnA} : QnAProps) => {
 
     fetchFilteredContent();
 
-  }, [debouncedValue])
+  }, [debouncedValue, fetchContent])
 
   const handleActiveQuestion = (index: number) => {
     const globalIndex = currentIndex * QUESTIONS_PER_PAGE + index;
@@ -64,7 +62,7 @@ export const BancoRespuestas = ({firstPageQnA} : QnAProps) => {
 
   useEffect(() => {
     fetchContent();
-  }, [currentIndex])
+  }, [currentIndex, fetchContent])
 
 
   return (

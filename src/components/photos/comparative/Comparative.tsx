@@ -1,6 +1,5 @@
 import { devices } from '@/src/utils/devices'
 import Image from 'next/image'
-import Script from 'next/script'
 import React from 'react'
 export const Comparative = () => {
   return (
@@ -22,8 +21,6 @@ export const Comparative = () => {
             ))}
         </div>
     </div>
-    
-    <Script src="./vanilla-tilt.min.js"  strategy="afterInteractive" />
     </>
   )
 }

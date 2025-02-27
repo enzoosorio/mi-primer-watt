@@ -1,8 +1,4 @@
-import { BancoRespuestas } from './BancoRespuestas'
 import { BancoPreguntas } from './BancoPreguntas'
-import {InferInput} from 'valibot'
-import { QNASchemaValibot } from '@/src/schemas/valibotSchemas/qnaSchemaValibot'
-import { IQnA } from '@/src/schemas/mongooseSchemas/QnA'
 import { Suspense } from 'react'
 import { BancoRespuestasSkeleton } from '@/src/skeletons/BancoRespuestasSkeleton'
 import { BancoRespuestasWrapper } from './BancoRespuestasWrapper'

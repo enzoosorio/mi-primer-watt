@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Welcome } from "@/src/components/Hero/Welcome";
 import { HorizontalSlider } from "@/src/components/Hero/HorizontalSlider";
 import { StickyNotesMain } from "@/src/components/Hero/StickyNotes";

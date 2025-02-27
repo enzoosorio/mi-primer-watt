@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 // import TimelineMock from "@/src/utils/timelineMock.json";
 import { IAlbumWithId } from "@/src/lib/timeline/getAllDatesTimeline";
-import { usePathname, useSearchParams, useRouter, useParams } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 interface TimelineContainerProps {
@@ -25,7 +25,6 @@ export const TimelineContainer = ({
   const containerDatesTimelineRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(true);
   const [timelineBarHeight, setTimelineBarHeight] = useState(100);
-  const [buttonPicked, setButtonPicked] = useState<HTMLButtonElement | null>(null);
   const [translateY, setTranslateY] = useState(0)
   const [timelineMobileOpen, setTimelineMobileOpen] = useState(false);
   const searchParams = useSearchParams();
@@ -33,7 +32,7 @@ export const TimelineContainer = ({
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const settingSearchParams = (term : string) => { 
+  const settingSearchParams = useCallback((term: string) => { 
     const params = new URLSearchParams(searchParams);
     if (term) {
       params.set("date", term);
@@ -41,7 +40,7 @@ export const TimelineContainer = ({
       params.delete("date");
     }
     replace(`${pathname}?${params.toString()}`);
-  }
+  }, [searchParams, pathname, replace]);
 
   const handleButtonDate = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, term: string) => {
     try {
@@ -49,7 +48,6 @@ export const TimelineContainer = ({
   
       if (containerTimelineRef.current && buttonSliderRef.current) {
         const button = e.currentTarget;
-        setButtonPicked(button); // Actualizar la referencia al botón seleccionado
         const container = containerTimelineRef.current;
   
         const buttonRect = button.getBoundingClientRect();
@@ -118,7 +116,7 @@ export const TimelineContainer = ({
         }  
       }
     }, 500);
-  }, [searchParams, timelineMobileOpen])
+  }, [searchParams, timelineMobileOpen, settingSearchParams, currentDate])
 
   
   

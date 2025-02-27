@@ -2,7 +2,6 @@
 
 import QnACollection, { IQnA } from "@/src/schemas/mongooseSchemas/QnA";
 import connectDB from "@/src/utils/db";
-import { revalidatePath } from "next/cache";
 import { QNASchemaValibot } from "../schemas/valibotSchemas/qnaSchemaValibot";
 import { InferInput } from "valibot";
 import { IQnAWithId } from "../lib/getQuestionsInPending";

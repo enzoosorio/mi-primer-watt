@@ -51,7 +51,7 @@ export const StickyNote = ({
         return () => {
             document.removeEventListener('click', handleClickOutsideDialog)
         }
-    }, [])
+    }, [showDialog])
 
 
 

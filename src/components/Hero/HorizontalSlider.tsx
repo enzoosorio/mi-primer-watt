@@ -49,7 +49,7 @@ export const HorizontalSlider = () => {
                   {photosSliderMessages[index]}
                 </p>
                 {album.map((photo, photoIndex) => (
-                  <img
+                  <Image
                     key={photoIndex}
                     src={photo.src}
                     alt={photo.alt}
