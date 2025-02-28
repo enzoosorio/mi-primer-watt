@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export const PersonalExperience = () => {
   return (
-    <section className="mt-20 flex flex-col items-center justify-center gap-10 rounded-lg w-full welcomeToMain ">
+    <section className="mt-10 flex flex-col items-center justify-center gap-10 rounded-lg w-full welcomeToMain ">
     <h1 className="text-5xl font-delicious-small-caps text-center ">Experiencia Personal</h1>
     <div className="flex flex-col-reverse xl:flex-row items-center justify-center gap-12 xl:gap-20 w-[95%] mx-auto mt-10">
         <p className="max-w-[70ch] text-pretty text-center xl:text-left xl:max-w-[50ch] font-roboto text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam rem 

@@ -104,7 +104,7 @@ export const Header = () => {
     <button 
     onClick={handleClick}
     className="burguer-menu lg:hidden cursor-pointer z-50 ">
-      { menuOpen ? <Image src="/svgs/burger-menu-right-color.svg" alt="burger-menu-color" className={'burger-svg w-8 h-8'} width={32} height={32}/> : <Image src={`/svgs/burger-${headerScroll ? "menu-white" : "menu-color"}.svg`} alt="burger-menu-color" className={'burger-svg w-8 h-8'}/> }
+      { menuOpen ? <Image src="/svgs/burger-menu-right-color.svg" alt="burger-menu-color" className={'burger-svg w-8 h-8'} width={32} height={32}/> : <Image src={`/svgs/burger-${headerScroll ? "menu-white" : "menu-color"}.svg`} alt="burger-menu-color" className={'burger-svg w-8 h-8'} width={32} height={32}/> }
     </button>
     <div className={`optionsForMobile lg:hidden absolute inset-0 h-[100dvh] ${menuOpen ? "left-0 opacity-100" : "left-[200%] opacity-0"} bg-regal-blue transition-all duration-300 flex flex-col justify-center items-center gap-20 pt-16`}>
       <ul className="anchorsMobileContainer flex flex-col justify-center items-center w-full gap-12 text-white">

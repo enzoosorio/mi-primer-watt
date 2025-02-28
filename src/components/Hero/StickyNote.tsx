@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 
 interface StickyNotesProps {
@@ -76,9 +77,14 @@ export const StickyNote = ({
   className="flex flex-row font-delicious-small-caps items-center justify-between border-b border-gray-900 w-full pb-2"
   >
     <p className="text-lg font-semibold">{titleForDialog}</p>
-    <ul className="flex flex-row items-center justify-center gap-8">
+    <ul className="flex flex-row items-center justify-center gap-8 ">
       <li>
         {title}
+      </li>
+      <li className='h-full flex flex-row items-center justify-center gap-4 rounded-lg'>
+        <button className=' h-full cursor-pointer rounded-full bg-yellow-500'>
+          <Image src="/svgs/start-audio.svg" alt="" className={'close-btn w-8 h-8'} width={32} height={32}/>
+        </button>
       </li>
       <li>
         <button
@@ -87,10 +93,11 @@ export const StickyNote = ({
       </li>
     </ul>
   </nav>
-
-  <div className="w-[98%] mx-auto mt-4 text-pretty ">
-    <p className="text-lg font-semibold">{contentForDialog}</p>
+  {contentForDialog && (
+    <div className="w-[98%] mx-auto mt-4 text-pretty ">
+    <p className="text-lg " dangerouslySetInnerHTML={{__html: contentForDialog}}/>
   </div>
+  )}
   
 </dialog>
    </React.Fragment>

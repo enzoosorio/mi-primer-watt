@@ -4,7 +4,7 @@ import { StickyNote } from './StickyNote'
 export const StickyNotesMain = () => {
   return (
     <section
-  className="relative w-full flex flex-col items-center justify-center mt-56 mb-40 mx-auto welcomeToMain"
+  className="relative w-full flex flex-col items-center justify-center mt-10 mb-40 mx-auto welcomeToMain"
 >
   <h1 className="w-max mx-auto text-3xl lg:text-5xl font-delicious-small-caps">¡Dale click y conoce más!</h1>
   <div

@@ -5,7 +5,8 @@ export const stickyNotes : StickyNotes[] = [
       title: "Inversión",
       bgColor: "bg-yellow",
       titleForDialog: "Nota 1",
-      contentForDialog: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      contentForDialog: `La inversión para cada work and travel es muy diferente y podrá variar dependiendo de tu país, de la agencia con la que estarás haciendo el programa, del tipo de programa, al estado en donde vas, los tiempos de compra del boleto de avión, etc... 
+<br/>Lo que más puedo rescatar de mi work and travel es que se hizo una inversión de $4000 aprox. y para mis cuentas, me sirvió el que nuestro hotel nos haya dado comida (almuerzo), que tengamos <strong>transporte gratis</strong> para toda la ciudad y que el housing no nos haya salido tan caro como se pensaba.`,
     },
     {
       title: "Entorno",

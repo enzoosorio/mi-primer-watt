@@ -33,7 +33,7 @@ export const HorizontalSlider = () => {
 
   return (
     <section
-  className="no-scrollbar w-full flex flex-row items-center justify-center gap-12 mt-56 pb-40 welcomeToMain"
+  className="no-scrollbar w-full flex flex-row items-center justify-center gap-12 mt-48 pb-40 welcomeToMain"
 >
 <div className="no-scrollbar relative flex items-center justify-center gap-24 w-full md:w-max my-20">
         {/* Contenedor principal que aloja todos los álb  umes */}

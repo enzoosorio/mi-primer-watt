@@ -1,5 +1,11 @@
 import { MainPhotos } from '@/src/components/photos/MainPhotos'
 import React from 'react'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Photos",
+  description: "En esta sección puedes encontrar las fotos del viaje a Montana, teniendo fotos de diferentes lugares y con diferentes estilos de vida. ¡Disfruta de la experiencia!",
+};
 
 export default function PhotosPage(){
   return (

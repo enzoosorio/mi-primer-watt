@@ -7,13 +7,13 @@ export const Welcome = () => {
   const VALORACION = 3;
 
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
+    setIsMobile(window.innerWidth <= 1024);
   }, []);
 
   return (
-    <section className="relative w-full mt-12  flex flex-col items-center justify-center gap-12 ">
-      <div className="flex flex-col w-[95%] lg:w-max h-full  lg:flex-row items-center justify-end gap-12 lg:gap-24 mx-auto">
-        <div className="flex flex-col justify-end items-end gap-8  ">
+    <section className="relative w-full mt-12 lg:mt-20  flex flex-col items-center justify-center gap-12 ">
+      <div className="flex flex-col w-[95%] lg:w-max h-full  lg:flex-row items-center justify-start gap-12 lg:gap-24 mx-auto">
+        <div className="flex flex-col justify-end text-white lg:text-black items-end gap-8 mt-6 lg:mt-0  ">
           <h1 className="text-5xl lg:text-6xl font-bold text-center lg:text-right lg:mx-0 w-[14ch] mx-auto lg:w-[10ch]  tracking-tighter">
             Work and Travel en Montana
           </h1>
@@ -37,14 +37,27 @@ export const Welcome = () => {
                       height={48}
                       className={"w-12 h-12"}
                     />
-                  ) : (
-                    <Image
+                  ) :  (
+                   <>
+                    <div className="hidden lg:block">
+                      <Image
                       src={"/svgs/copo-de-nieve.svg"}
                       alt="Copo de nieve"
                       width={48}
                       height={48}
                       className={"w-12 h-12"}
                     />
+                    </div>
+                    <div className="block lg:hidden">
+                    <Image
+                    src={"/svgs/copo-de-nieve-white.svg"}
+                    alt="Copo de nieve"
+                    width={48}
+                    height={48}
+                    className={"w-12 h-12"}
+                  />
+                  </div>
+                   </>
                   )}
                   <p className="text-sm font-bold">{i}</p>
                 </div>
@@ -52,24 +65,38 @@ export const Welcome = () => {
             </div>
           </div>
         </div>
-
-        <Image
+        <div className="absolute top-0 -z-20 lg:relative min-w-[700px] lg:min-w-0 w-full max-w-[850px] lg:w-[650px] xl:w-[750px] aspect-video bg-black/80 blur-xs lg:blur-none">
+          <video
+            // className="bg-black"
+            autoPlay
+            muted
+            playsInline
+            loop
+            preload="metadata"
+          >
+            <source src="/videos/video-montana.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 bg-black/40 "> </div>
+        </div>
+        {/* <Image
           src="/images/minions-image.png"
           alt="Welcome"
           width={350}
           height={400}
           className={""}
-        />
+        /> */}
       </div>
-      <button 
-      onClick={() => {
-        window.scroll({
+      <button
+        onClick={() => {
+          window.scroll({
             top: isMobile ? 1080 : 845,
             left: 0,
-            behavior: 'smooth'
-          })
-      }}
-      className="absolute bg-yellow -bottom-24 w-max px-4 py-1 cursor-pointer rounded-full animationButtonBounce">
+            behavior: "smooth",
+          });
+        }}
+        className="absolute bg-yellow -bottom-24 w-max px-4 py-1 cursor-pointer rounded-full animationButtonBounce"
+      >
         <Image
           src="/svgs/Chevron Down.svg"
           alt="ChevronDown"
