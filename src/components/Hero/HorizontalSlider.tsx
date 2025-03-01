@@ -53,7 +53,7 @@ export const HorizontalSlider = () => {
                     key={photoIndex}
                     src={photo.src}
                     alt={photo.alt}
-                    className={`object-cover h-[300px]  md:w-auto md:h-auto  ${ photoIndex === album.length - 2 || photoIndex === album.length - 1 ? "z-20" : ""}`}
+                    className={`object-contain bg-black/15 max-h-[400px] rounded-xl object-center  md:w-auto md:h-auto  ${ photoIndex === album.length - 2 || photoIndex === album.length - 1 ? "z-20" : ""}`}
                     style={{ width : `${photoWidth}px`}}
                     width={photo.width}
                     height={photo.height}

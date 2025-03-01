@@ -74,7 +74,7 @@ export const Welcome = () => {
             loop
             preload="metadata"
           >
-            <source src="/videos/video-montana.mp4" type="video/mp4" />
+            <source src="https://miprimerwat.s3.sa-east-1.amazonaws.com/Video-Montana.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-black/40 "> </div>
