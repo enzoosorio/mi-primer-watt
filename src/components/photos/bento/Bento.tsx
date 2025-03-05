@@ -9,12 +9,10 @@ interface BentoPhotosProps{
 }
 export const Bento = ({photos} : BentoPhotosProps) => {
 
-  const bentoPhotoss : IBentoPhotos[] = photos ?? bentoPhotos
-
   return (
     <section className="w-[95%] mx-auto flex flex-col items-center justify-center gap-12 my-12 welcomeToMain">
         <div className="gridContainer w-full bg-blue-600/10">
-            {bentoPhotoss.map((photo, index) => (
+            {photos.map((photo, index) => (
                     <div 
                     key={index}
                     className={`flex flex-col items-center justify-center gap-6 rounded-xl aspect-auto h-full`}>
