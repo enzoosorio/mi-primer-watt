@@ -294,3 +294,16 @@ dialog[open] {
   animation: scrollViewSticky linear forwards;
   animation-timeline: stickyTimeline;
 }
+
+.bentoLoading{
+  animation: bento-loading 1s linear infinite alternate;
+}
+
+@keyframes bento-loading {
+  0% {
+    background-color: hsl(200, 20%, 60%);
+  }
+  100% {
+    transform: hsl(200, 20%, 85%);
+  }
+}

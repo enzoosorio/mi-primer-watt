@@ -39,12 +39,21 @@ export const createBentoPhotos = async(listingObject : IcreateBentoPhotos) => {
         }));
 
 
-        const category : ICategoryBentoPhotos = await CategoryBentoCollection.create({
-            category: listingObject.category
-        });
+        let absoluteCategory
+        const existingCategory = await CategoryBentoCollection.where("category").equals(listingObject.category).findOne();
 
-        if(!category){
-            return { error: "No se pudo crear la categoría" }
+        if(!existingCategory){
+            const category : ICategoryBentoPhotos = await CategoryBentoCollection.create({
+                category: listingObject.category
+            });
+    
+            if(!category){
+                return { error: "No se pudo crear la categoría" }
+            }
+            absoluteCategory = category
+        }
+        else{
+            absoluteCategory = existingCategory
         }
 
         const bentoPhotos = await Promise.all(
@@ -52,7 +61,7 @@ export const createBentoPhotos = async(listingObject : IcreateBentoPhotos) => {
                 return BentoPhotosCollection.create({
                     src: url.url,
                     alt: `${index}-${listingObject.alt}`,
-                    categoryId: category._id,
+                    categoryId: absoluteCategory._id,
                     aspectRatio : listingObject.aspectRatio
                 });
             })

@@ -1,30 +1,26 @@
-import { IBentoPhotos } from '@/src/schemas/mongooseSchemas/BentoPhotos'
 
-import Image from 'next/image'
-import React from 'react'
+import {  Suspense } from 'react'
+import { SelectCategoryContainer } from './SelectCategoryContainer'
+import { BentoContainer } from './BentoContainer'
+import { SelectCategoriesBentoPhotosSkeleton } from '@/src/skeletons/SelectCategoriesBentoPhotosSkeleton'
+import { BentoContainerSkeleton } from '@/src/skeletons/BentoContainerSkeleton'
 
-interface BentoPhotosProps{
-  photos : IBentoPhotos[]
-}
-export const Bento = ({photos} : BentoPhotosProps) => {
-
+export const Bento = ({category} : {category : string | null}) => {
   return (
     <section className="w-[95%] mx-auto flex flex-col items-center justify-center gap-12 my-12 welcomeToMain">
-        <div className="gridContainer w-full bg-blue-600/10">
-            {photos.map((photo, index) => (
-                    <div 
-                    key={index}
-                    className={`flex flex-col items-center justify-center gap-6 rounded-xl aspect-auto h-full`}>
-                        <Image src={photo.src.split("?")[0]} 
-                        alt={photo.alt}
-                        className={`rounded-xl object-cover object-center w-full h-full max-w-full align-middle inline-block
-                        `} 
-                        width={400} 
-                        height={400} />
-                    </div>
-                    
-                ))}
-        </div>
+        <div className='mt-8 flex flex-col items-center justify-center gap-4 w-full'>
+          <h1 className='font-roboto text-4xl lg:text-6xl font-bold text-center'>Bento Photos</h1>
+          <h4 className='text-lg'>(Perdón si existen imágenes repetidas)</h4>
+          <p className='w-[88%] lg:w-full text-center text-pretty'>Usa el filtrado de categorias para poder ver fotos de tus intereses</p>
+        </div> 
+        
+       <Suspense fallback={<SelectCategoriesBentoPhotosSkeleton/>}>
+        <SelectCategoryContainer/>
+       </Suspense>
+      <Suspense fallback={<BentoContainerSkeleton/>}>
+      <BentoContainer category={category}/>
+      </Suspense>
+  
     </section>
   )
 }

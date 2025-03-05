@@ -13,7 +13,7 @@ export const Welcome = () => {
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 1024);
     
-    checkMobile(); // Se ejecuta una vez al inicio
+    checkMobile();
     window.addEventListener("resize", checkMobile);
   
     return () => window.removeEventListener("resize", checkMobile);

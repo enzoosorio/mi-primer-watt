@@ -89,10 +89,15 @@ export const AdminBentoPhotos = ({categoryBentoOptions} : AdminBentoPhotosProps)
         <form 
         onSubmit={(e) => handleCreatingBentoPhoto(e)}
         className='flex flex-col items-center justify-center gap-6 w-full'>
-            <RInput htmlFor="bentomedia" accept="image/*" multiple label="Selecciona imagen(es)" name="bentomedia" type="file" placeholder="Media"/>
-            <RInput htmlFor="alternative" label="Alt (opcional)" name="alternative" type="text" placeholder="paisaje atardecer..."/>
+            <RInput htmlFor="bentomedia" accept="image/*" strict multiple label="Selecciona imagen(es)" name="bentomedia" type="file" placeholder="Media"/>
+            <RInput htmlFor="alternative" label="Alt (opcional)" strict name="alternative" type="text" placeholder="paisaje atardecer..."/>
             <div className='flex flex-col items-start justify-center gap-4 w-full'>
-                <label className='font-nunito text-lg ' htmlFor="aspectRatio">Aspect Ratio</label>
+                <label className='font-nunito text-lg ' htmlFor="aspectRatio">
+                    Aspect Ratio
+                <span className="text-red-500">*</span>
+                <span className="text-red-500">*</span>
+                </label>
+                
                 <select
                 className={`w-full max-w-[55ch] rounded-lg min-h-[40px] ring ring-gray-500 
                     px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 
@@ -100,13 +105,15 @@ export const AdminBentoPhotos = ({categoryBentoOptions} : AdminBentoPhotosProps)
                 id="aspectRatio"
                 name="aspectRatio"
                 >
-                    <option value="Square">Aspecto cuadrado</option>
-                    <option value="Wide">Aspecto video</option>
-                    <option value="Tall">Aspecto tall</option>
+                    <option value="Square">Imagen cuadrada</option>
+                    <option value="Wide">Imagen horizontal</option>
+                    <option value="Tall">Imagen vertical</option>
                 </select>
             </div>
             <div className='flex flex-col items-start justify-center gap-4 w-full'>
-                <label className='font-nunito text-lg ' htmlFor="category">Categoria</label>
+                <label className='font-nunito text-lg ' htmlFor="category">Categoria
+                <span className="text-red-500">*</span>
+                </label>
                 <select
                 disabled={categoryBentoOptions?.length === 0 || categoryBentoOptions == null}
                 className={`w-full max-w-[55ch] rounded-lg min-h-[40px] ring ring-gray-500  px-4 py-2 text-sm font-medium 

@@ -3,12 +3,14 @@ import React from 'react'
 type RInput = React.InputHTMLAttributes<HTMLInputElement> & {
     htmlFor: string;
     label: string;
+    strict? : boolean
 };
-export const RInput = ({ htmlFor,label, ...props }: RInput) => {
+export const RInput = ({ htmlFor,label, strict, ...props }: RInput) => {
   return (
     <div className="flex flex-col items-start justify-start gap-2 w-full">
         <label className='font-nunito text-lg ' htmlFor={htmlFor}>
           {label}
+          {strict && <span className="text-red-500 text-xl">*</span>}
         </label>
         <input 
         disabled={props.disabled}
