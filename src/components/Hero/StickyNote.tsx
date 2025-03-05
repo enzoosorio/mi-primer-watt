@@ -1,5 +1,6 @@
 "use client";
 
+import useIsVisible2 from '@/src/hooks/useIsVisible2';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 
@@ -23,6 +24,7 @@ export const StickyNote = ({
   
     const [showDialog, setShowDialog] = useState(false);
     const dialogRef = React.useRef<HTMLDialogElement>(null);
+    const { ref, isVisible } = useIsVisible2(0.6);
 
     const handleDialog = () => {
      const dialog = dialogRef.current
@@ -39,30 +41,30 @@ export const StickyNote = ({
         }
     }
     }
+    
 
     useEffect(() => {
-        const handleClickOutsideDialog = (event : MouseEvent) => {
-            const dialog = dialogRef.current
-            if (dialog && !dialog.contains(event.target as Node) && showDialog) {
-                dialog.close()
-                setShowDialog(false)
-            }
-        }
-        document.addEventListener('click', handleClickOutsideDialog)
-        return () => {
-            document.removeEventListener('click', handleClickOutsideDialog)
-        }
-    }, [showDialog])
-
-
+      const handleClickOutsideDialog = (event: MouseEvent) => {
+          const dialog = dialogRef.current;
+          if (dialog && !dialog.contains(event.target as Node) && showDialog) {
+              dialog.close();
+              setShowDialog(false);
+          }
+      };
+      document.addEventListener('click', handleClickOutsideDialog);
+      return () => {
+          document.removeEventListener('click', handleClickOutsideDialog);
+      };
+  }, [showDialog]);
 
     return (
    <React.Fragment key={idStickyNote}>
     <div
-    
-  id={idStickyNote}
+    ref={ref}
+    id={idStickyNote}
     onClick={handleDialog}
-  className={`w-[250px] h-[160px] md:w-[330px] md:h-[180px] cursor-pointer flex flex-row items-center justify-center rounded-md ${bgColor} ${textColor} stickyNote`}
+  className={`w-[250px] h-[160px] md:w-[330px] md:h-[180px] cursor-pointer flex flex-row items-center justify-center rounded-md ${bgColor} ${textColor} 
+  stickyNote ${isVisible ? "scale-100 opacity-100" : "scale-90 opacity-50"} transition-all duration-300`}
   data-dialog={`dialog-${idStickyNote}`}
 >
   <p className="text-[2.5rem] font-bold font-roboto">{title}</p>
@@ -71,7 +73,7 @@ export const StickyNote = ({
 <dialog 
   ref={dialogRef}
   id={`dialog-${idStickyNote}`} 
-  className={`sticky-dialog font-nunito fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${bgColor} p-3 rounded-lg shadow-lg min-w-[400px] lg:min-w-[600px] min-h-max lg:min-h-[450px] pb-8 `}
+  className={`sticky-dialog font-nunito fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${bgColor} p-3 rounded-lg shadow-lg min-w-[95%] sm:min-w-[400px] lg:min-w-[600px] min-h-max lg:min-h-[450px] pb-8 `}
 >
   <nav 
   className="flex flex-row font-delicious-small-caps items-center justify-between border-b border-gray-900 w-full pb-2"
@@ -82,7 +84,7 @@ export const StickyNote = ({
         {title}
       </li>
       <li className='h-full flex flex-row items-center justify-center gap-4 rounded-lg'>
-        <button className=' h-full cursor-pointer rounded-full bg-yellow-500'>
+        <button className=' h-full cursor-pointer rounded-full bg-white'>
           <Image src="/svgs/start-audio.svg" alt="" className={'close-btn w-8 h-8'} width={32} height={32}/>
         </button>
       </li>

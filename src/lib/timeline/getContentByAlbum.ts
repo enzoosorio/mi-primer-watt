@@ -28,12 +28,12 @@ export const getContentsByAlbum = async (albumId : string) => {
       return null
   }
 
-  const associatedMedia : IMediaWithId[] = JSON.parse(JSON.stringify(await MediaCollection.find({ _id: { $in: contentArray.map(content => content.media) } })))
+  const associatedMedia = JSON.parse(JSON.stringify(await MediaCollection.find({ _id: { $in: contentArray.map(content => content.media) } })))
 
   const contentWithMedia : IContentAlbumWithId[] = contentArray.map((content) => {
     return {
       ...content,
-      mediaArr: associatedMedia.filter(media => media._id === content.media.toString())
+      mediaArr: associatedMedia
     }
   })
 

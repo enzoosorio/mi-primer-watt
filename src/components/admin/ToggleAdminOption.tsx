@@ -34,6 +34,11 @@ export const ToggleAdminOption = () => {
         className={`font-delicious-small-caps px-4 py-2 text-xl bg-primary-blue text-white rounded-lg hover:bg-blue-400 ${option === "timeline" ? "bg-blue-400" : "bg-primary-blue"} transition-colors cursor-pointer`}>
             Timeline
         </button>
+        <button 
+        onClick={(() => handleToggleOption("bento"))}
+        className={`font-delicious-small-caps px-4 py-2 text-xl bg-primary-blue text-white rounded-lg hover:bg-blue-400 ${option === "bento" ? "bg-blue-400" : "bg-primary-blue"} transition-colors cursor-pointer`}>
+            Bento Photos
+        </button>
     </div>
   )
 }

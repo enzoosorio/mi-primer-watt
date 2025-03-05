@@ -266,3 +266,31 @@ dialog[open] {
     display: none;
   }
 }
+
+.stickyNoteScrollView{
+  animation: scrollViewSticky linear forwards;
+  animation-timeline: view();
+  animation-range: end;
+}
+
+@keyframes scrollViewSticky {
+  from {
+    scale: .8;
+    opacity: 0;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+
+}
+
+@scroll-timeline stickyTimeline {
+  source: auto;
+  scroll-offsets: start 80% end 100%;
+}
+
+.stickyNoteScrollView {
+  animation: scrollViewSticky linear forwards;
+  animation-timeline: stickyTimeline;
+}

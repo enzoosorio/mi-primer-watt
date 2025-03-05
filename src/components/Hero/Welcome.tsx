@@ -1,27 +1,39 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import useIsVisible from "@/src/hooks/useIsVisible";
 export const Welcome = () => {
   const [isMobile, setIsMobile] = useState(false);
   const VALORACION = 3;
-
+  const titleRef = useRef(null);
+  const textIsVisible = useIsVisible(titleRef); 
+  
+  
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 1024);
+    const checkMobile = () => setIsMobile(window.innerWidth <= 1024);
+    
+    checkMobile(); // Se ejecuta una vez al inicio
+    window.addEventListener("resize", checkMobile);
+  
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
     <section className="relative w-full mt-12 lg:mt-20  flex flex-col items-center justify-center gap-12 ">
       <div className="flex flex-col w-[95%] lg:w-max h-full  lg:flex-row items-center justify-start gap-12 lg:gap-24 mx-auto">
         <div className="flex flex-col justify-end text-white lg:text-black items-end gap-8 mt-6 lg:mt-0  ">
-          <h1 className="text-5xl lg:text-6xl font-bold text-center lg:text-right lg:mx-0 w-[14ch] mx-auto lg:w-[10ch]  tracking-tighter">
+          <h1 
+          ref={titleRef}
+          className={`text-5xl lg:text-6xl font-bold text-center lg:text-right lg:mx-0 w-[14ch] mx-auto lg:w-[10ch] ${textIsVisible ? "opacity-100 lg:translate-x-0" : "opacity-10 lg:translate-x-full"} transition-all duration-300 tracking-tighter`}>
             Work and Travel en Montana
           </h1>
-          <p className="font-nunito text-lg tracking-tighter w-[35ch] lg:w-[40ch] mx-auto lg:mx-0 text-center lg:text-right">
+          <p className={`font-nunito text-lg tracking-tighter w-[35ch] lg:w-[40ch] mx-auto lg:mx-0 text-center lg:text-right ${textIsVisible ? "opacity-100 lg:translate-x-0" : "opacity-10 lg:translate-x-[200%]"} transition-all duration-500`}>
             Un invierno con frío extremo. Paisajes únicos y nuevos amigos de
             otros países{" "}
           </p>
-          <div className="flex flex-col items-center justify-center gap-4  mx-auto lg:mx-0">
+          <div 
+          className={`flex flex-col items-center justify-center gap-4  mx-auto lg:mx-0 ${textIsVisible ? "opacity-100 " : "opacity-10 "} transition-all duration-700`}>
             <p className="text-lg font-nunito">Valoración del viaje</p>
             <div className="flex flex-row items-center justify-center gap-4">
               {Array.from({ length: 5 }, (_, i) => i + 1).map((i, index) => (
