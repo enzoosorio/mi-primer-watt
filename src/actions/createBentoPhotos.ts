@@ -4,7 +4,7 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import connectDB from "../utils/db";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { s3Client } from "../utils/s3";
-import BentoPhotosCollection, { IBentoPhotos } from "../schemas/mongooseSchemas/BentoPhotos";
+import BentoPhotosCollection from "../schemas/mongooseSchemas/BentoPhotos";
 import CategoryBentoCollection, { ICategoryBentoPhotos } from "../schemas/mongooseSchemas/CategoryBentoPhotos";
 
 interface IcreateBentoPhotos {

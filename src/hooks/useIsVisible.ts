@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, RefObject } from "react";
 
 const OPTIONS = {
   root: null,
@@ -6,7 +6,7 @@ const OPTIONS = {
   threshold: 0, // Detecta tan pronto como entra en el viewport
 };
 
-const useIsVisible = (elementRef: any) => {
+const useIsVisible = (elementRef: RefObject<HTMLElement | null>) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

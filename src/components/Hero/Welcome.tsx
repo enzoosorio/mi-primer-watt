@@ -6,7 +6,7 @@ import useIsVisible from "@/src/hooks/useIsVisible";
 export const Welcome = () => {
   const [isMobile, setIsMobile] = useState(false);
   const VALORACION = 3;
-  const titleRef = useRef(null);
+  const titleRef = useRef<HTMLDivElement>(null);
   const textIsVisible = useIsVisible(titleRef); 
   
   

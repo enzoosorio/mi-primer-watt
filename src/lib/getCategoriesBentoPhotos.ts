@@ -7,13 +7,13 @@ export const getCategoryBentoOptions = async (): Promise<string[] | null> => {
     await connectDB();
 
     try {
-        const categoryBentoOptions : any = JSON.parse(JSON.stringify(await CategoryBentoCollection.distinct("category")));
+        const categoryBentoOptions : string[] = JSON.parse(JSON.stringify(await CategoryBentoCollection.distinct("category")));
 
         if (!categoryBentoOptions) {
             return null;
         }
 
-        categoryBentoOptions.sort((a : string, b : string) => a.localeCompare(b));
+        categoryBentoOptions.sort((a, b) => a.localeCompare(b));
 
         return categoryBentoOptions;
     } catch (error) {

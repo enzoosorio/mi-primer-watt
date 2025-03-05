@@ -1,5 +1,4 @@
 import { IBentoPhotos } from '@/src/schemas/mongooseSchemas/BentoPhotos'
-import { bentoPhotos } from '@/src/utils/bentoPhotos'
 
 import Image from 'next/image'
 import React from 'react'
