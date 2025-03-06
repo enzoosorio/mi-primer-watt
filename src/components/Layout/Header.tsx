@@ -73,7 +73,7 @@ export const Header = () => {
   
   return (
     <header
-    className={`fixed w-full py-4 px-8 z-[100] left-0 top-0 right-0 ${headerScroll ? " headerBgGradientDark " : "headerBgGradient"} ${scrollDirection === "down" ? "-translate-y-20" : "translate-y-0"} transition-all duration-500 flex flex-row justify-center items-center `}>
+    className={`sticky w-full py-4 px-8 z-[100] left-0 top-0 right-0 ${headerScroll ? " headerBgGradientDark " : "headerBgGradient"} ${scrollDirection === "down" ? "-translate-y-20" : "translate-y-0"} transition-all duration-500 flex flex-row justify-center items-center `}>
     <ul className="hidden lg:flex flex-row justify-between items-center w-full">
       {items.map((item, index) => {
         const isActive = pathname === item.href;

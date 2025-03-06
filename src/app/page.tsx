@@ -1,8 +1,8 @@
 import { Welcome } from "@/src/components/Hero/Welcome";
-import { HorizontalSlider } from "@/src/components/Hero/HorizontalSlider";
 import { StickyNotesMain } from "@/src/components/Hero/StickyNotes";
 import { PersonalExperience } from "../components/Hero/PersonalExperience";
 import { Metadata } from "next";
+import { HorizontalSliderMotion } from "../components/Hero/HorizontalSliderMotion";
 
 export const metadata: Metadata = {
   title: "Inicio",
@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="w-[95%] mx-auto">
     <Welcome/>
-    <HorizontalSlider/>
+    <HorizontalSliderMotion/>
     <StickyNotesMain/> 
     <PersonalExperience/>
     </main>

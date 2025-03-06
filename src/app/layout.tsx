@@ -43,7 +43,7 @@ export default function RootLayout({
       >
         <Header/>
         <Toaster />
-        <div className="mt-12"></div>
+        {/* <div className="mt-12"></div> */}
         {children}
         <div className="py-10"></div>
         <Footer/>
