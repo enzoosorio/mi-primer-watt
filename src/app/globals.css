@@ -28,7 +28,9 @@ html {
 
 body {
 overflow-x: clip;
+transition: all 0.3s ease-in-out;
 }
+
   
 .welcomeToMain {
   background-image: linear-gradient(180deg, rgba(153, 19, 144, 1%) 1%, rgba(96, 188, 237, 10%) 10%, rgba(87, 184, 208, 10%) 51%, rgba(95, 147, 174, 10%) 89%, rgba(153, 19, 144, 1%) 100%);
@@ -267,33 +269,6 @@ dialog[open] {
   }
 }
 
-.stickyNoteScrollView{
-  animation: scrollViewSticky linear forwards;
-  animation-timeline: view();
-  animation-range: end;
-}
-
-@keyframes scrollViewSticky {
-  from {
-    scale: .8;
-    opacity: 0;
-  }
-  to {
-    scale: 1;
-    opacity: 1;
-  }
-
-}
-
-@scroll-timeline stickyTimeline {
-  source: auto;
-  scroll-offsets: start 80% end 100%;
-}
-
-.stickyNoteScrollView {
-  animation: scrollViewSticky linear forwards;
-  animation-timeline: stickyTimeline;
-}
 
 .bentoLoading{
   animation: bento-loading 1s linear infinite alternate;
@@ -306,4 +281,32 @@ dialog[open] {
   100% {
     transform: hsl(200, 20%, 85%);
   }
+}
+
+
+.page-transition {
+  opacity: 0;
+  background-color: black;
+  transform: translateY(100px);
+  filter: blur(10px);
+  z-index: 100000000000;
+}
+
+
+.thight-scroll {
+  overflow-y: auto;
+}
+
+/* Para navegadores basados en WebKit (Chrome, Safari) */
+.thight-scroll::-webkit-scrollbar {
+  width: 3px; /* Ancho de la barra de desplazamiento */
+}
+
+.thight-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* Color de la barra */
+  border-radius: 12px; /* Bordes redondeados */
+}
+
+.thight-scroll::-webkit-scrollbar-track {
+  background: transparent; /* Fondo del track */
 }

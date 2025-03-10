@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { CustomLink } from '../UI/CustomLink';
 
 const items = [
     { href: "/", text: "Principio" },
@@ -81,7 +81,7 @@ export const Header = () => {
           <li 
           key={index}
           className="text-lg">
-            <Link
+            <CustomLink
               href={item.href}
               className={`anchors-header no-underline rounded-xl font-nunito p-3 transition-all duration-300
                 ${
@@ -96,7 +96,7 @@ export const Header = () => {
                 }`}
             >
               {item.text}
-            </Link>
+            </CustomLink>
           </li>
         );
       })}
